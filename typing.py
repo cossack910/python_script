@@ -1,19 +1,29 @@
 import random
 import time
 
-alphabet = "abcdefghijklmnopqrstuvwxyz"
+ALPHABET = "abcdefghijklmnopqrstuvwxyz"
+TARGET_CHAR_COUNT = 500
+MIN_WORD_LENGTH = 5
+MAX_WORD_LENGTH = 20
 
-word_cnt = 0
-start_time = time.time()
+def generate_random_word():
+    """ランダムな単語を生成する"""
+    word_length = random.randint(MIN_WORD_LENGTH, MAX_WORD_LENGTH)
+    return ''.join(random.choice(ALPHABET) for _ in range(word_length))
 
-while True:
-    word = ''.join([alphabet[random.randint(0, 25)] for n in range(random.randint(5, 20))])
-    print(word)
-    if word == input():
-        word_cnt += len(word)
-    if word_cnt >= 400:
+def typing_game():
+    word_cnt = 0
+    start_time = time.time()
+    
+    while word_cnt < TARGET_CHAR_COUNT:
+        word = generate_random_word()
+        print(word)
+        if word == input():
+            word_cnt += len(word)
         elapsed_time = time.time() - start_time
         print("clear!!!")
         print(f"クリア時間: {elapsed_time:.2f} 秒")
         print(f"クリア文字数: {word_cnt}")
-        break
+
+if __name__ == "__main__":
+    typing_game()
