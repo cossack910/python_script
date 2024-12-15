@@ -1,19 +1,19 @@
 
-def input_blank_check(inp: str):
-    return  inp.strip() == ''
+def is_input_blank(inp: str):
+    return  inp.strip() != ''
 
-def array_length_check_one_uquare_or_not(arr: list):
+def is_array_length_valid(arr: list):
     return len(arr) > 1
 
 
 def array_diff_calc(inp: str):
-    if input_blank_check(inp):
+    if is_input_blank(inp):
         arr = [int(i) for i in inp.split(',')]
     else:
         print('error')
         return False
     
-    if array_length_check_one_uquare_or_not(arr):
+    if is_array_length_valid(arr):
         diff = max(arr) - min(arr)
         print(f'最大の差：{diff}')
         return True
