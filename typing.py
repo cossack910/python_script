@@ -20,7 +20,7 @@ def typing_game():
         print(word)
         if word == input():
             word_cnt += len(word)
-        elapsed_time = time.time() - start_time
+    elapsed_time = time.time() - start_time
     print("clear!!!")
     print(f"クリア時間: {elapsed_time:.2f} 秒")
     print(f"クリア文字数: {word_cnt}")
