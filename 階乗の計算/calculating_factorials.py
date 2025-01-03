@@ -1,12 +1,12 @@
-print('整数を入力してください：')
-num = int(input())
+def calc_factorias(n: int, factorias = 1):
+    if n == 0:
+        print(factorias)
+        return True
+    factorias *= n
+    calc_factorias(n - 1, factorias)
 
+num = int(input("整数を入力してください："))
 if num < 0:
     print('負の数には階乗は定義されていません')
-elif num == 0:
-    print('0! = 1')
 else:
-    factorias = 1
-    for i in range(1, num+1):
-        factorias *= i
-    print(factorias)
+    calc_factorias(num)
